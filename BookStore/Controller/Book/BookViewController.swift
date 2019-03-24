@@ -94,7 +94,7 @@ extension BookViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as! BookCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Cell.bookCell, for: indexPath) as! BookCell
         cell.configure(book: self.presenter.getBook(index: indexPath.row))
         return cell
     }
@@ -115,7 +115,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         let padding: CGFloat =  20
         let collectionViewSize = collectionView.frame.size.width - padding
 
-        return CGSize(width: collectionViewSize/2, height: 200)
+        return CGSize(width: collectionViewSize/2, height: 240)
     }
 
     func collectionView(_ collectionView: UICollectionView,
