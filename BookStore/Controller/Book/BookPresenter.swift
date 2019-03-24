@@ -66,4 +66,10 @@ final class BookPresenter {
         return self.listBook[index]
     }
 
+    public func openBuyBook(id: String) {
+        if let book = listBook.first(where: { $0.id == id}) {
+            guard let buyLink = book.saleInfo.buyLink else { return }
+            self.viewProtocol.showBuyBook(url: buyLink)
+        }
+    }
 }

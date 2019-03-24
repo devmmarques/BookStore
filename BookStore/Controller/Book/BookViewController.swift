@@ -143,6 +143,11 @@ extension BookViewController: BookProtocol {
 
     }
 
+    func showBuyBook(url: String) {
+        guard let urlBook = URL(string: url) else { return }
+        UIApplication.shared.openURL(urlBook)
+    }
+
     func dismissLoading() {
 
     }
@@ -156,5 +161,9 @@ extension BookViewController: BookCellDelegate {
 
     func favorite(id: String) {
         self.presenter.saveBook(id: id)
+    }
+
+    func buyBook(id: String) {
+        self.presenter.openBuyBook(id: id)
     }
 }

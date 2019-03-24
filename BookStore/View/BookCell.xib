@@ -42,6 +42,9 @@
                         <rect key="frame" x="80" y="196" width="30" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="Buy"/>
+                        <connections>
+                            <action selector="buyBook:" destination="ReN-xl-F4z" eventType="touchUpInside" id="KAq-8S-e36"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

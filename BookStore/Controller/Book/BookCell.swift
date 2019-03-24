@@ -10,6 +10,7 @@ import UIKit
 
 protocol BookCellDelegate: class {
     func favorite(id: String)
+    func buyBook(id: String)
 }
 
 final class BookCell: UICollectionViewCell {
@@ -47,4 +48,8 @@ final class BookCell: UICollectionViewCell {
         delegate?.favorite(id: id)
     }
 
+    @IBAction func buyBook(_ sender: UIButton) {
+        guard let id = self.idBook else { return }
+        delegate?.buyBook(id: id)
+    }
 }
