@@ -34,6 +34,8 @@
 		68E595A62247CB5B00ACEC37 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E595A52247CB5B00ACEC37 /* BookViewController.swift */; };
 		68E595A92247E48200ACEC37 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E595A82247E48200ACEC37 /* BookCell.swift */; };
 		68E595AC2247E70600ACEC37 /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E595AB2247E70600ACEC37 /* BookCell.xib */; };
+		68EC7DA72247EDD600A1429C /* BookProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC7DA62247EDD600A1429C /* BookProtocol.swift */; };
+		68EC7DA92247EE2900A1429C /* BookPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC7DA82247EE2900A1429C /* BookPresenter.swift */; };
 		A64D862B857A734CD1DDA149 /* Pods_BookStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62740B77B8A5A0C473A654B /* Pods_BookStore.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		68E595A52247CB5B00ACEC37 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		68E595A82247E48200ACEC37 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		68E595AB2247E70600ACEC37 /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
+		68EC7DA62247EDD600A1429C /* BookProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProtocol.swift; sourceTree = "<group>"; };
+		68EC7DA82247EE2900A1429C /* BookPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPresenter.swift; sourceTree = "<group>"; };
 		79CB0BD0F23CB615AAD7216C /* Pods-BookStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookStore.debug.xcconfig"; path = "Target Support Files/Pods-BookStore/Pods-BookStore.debug.xcconfig"; sourceTree = "<group>"; };
 		9D5CAA601FC81C58B30EA5ED /* Pods-BookStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookStoreTests.debug.xcconfig"; path = "Target Support Files/Pods-BookStoreTests/Pods-BookStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E079D19FA384DDADBFE7AC8F /* Pods_BookStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,7 +308,9 @@
 		68E595A72247E46400ACEC37 /* Book */ = {
 			isa = PBXGroup;
 			children = (
+				68EC7DA52247EDAA00A1429C /* Protocol */,
 				68E595A52247CB5B00ACEC37 /* BookViewController.swift */,
+				68EC7DA82247EE2900A1429C /* BookPresenter.swift */,
 				68E595A82247E48200ACEC37 /* BookCell.swift */,
 			);
 			path = Book;
@@ -318,6 +324,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		68EC7DA52247EDAA00A1429C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				68EC7DA62247EDD600A1429C /* BookProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		FFC6C3E4A66326AFE419F422 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +342,6 @@
 				37BFD0D4CA6EEF24630304C2 /* Pods-BookStoreUITests.debug.xcconfig */,
 				F7BC8D9B99118374EFF2FB67 /* Pods-BookStoreUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -574,7 +587,9 @@
 				68E595942247BD9E00ACEC37 /* SaleInfo.swift in Sources */,
 				68E595972247C23600ACEC37 /* ImageLinks.swift in Sources */,
 				68E595822247B55E00ACEC37 /* EnvironmentConfig.swift in Sources */,
+				68EC7DA92247EE2900A1429C /* BookPresenter.swift in Sources */,
 				68E595A32247C93100ACEC37 /* SearchResponse.swift in Sources */,
+				68EC7DA72247EDD600A1429C /* BookProtocol.swift in Sources */,
 				68E5958E2247B83900ACEC37 /* Book.swift in Sources */,
 				68E5957F2247B52A00ACEC37 /* APIRouter.swift in Sources */,
 				68E595A62247CB5B00ACEC37 /* BookViewController.swift in Sources */,

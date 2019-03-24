@@ -8,20 +8,89 @@
 
 import UIKit
 
-final class BookViewController: UIViewController {
+final class BookViewController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
 
+    // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
+
+    // Mark: Properties
+    let searchController = UISearchController(searchResultsController: nil)
+
+    private lazy var presenter: BookPresenter = {
+        let presenter = BookPresenter(viewProtocol: self, serviceAPI: BookService())
+        return presenter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: "BookCell")
+        configureSearchController()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.presenter.fetch(name: "ios")
+    }
+}
+
+extension BookViewController {
+
+    private func configureSearchController() {
+
+        let searchTextField: UITextField? = { [unowned self] in
+            var textField: UITextField?
+            searchController.searchBar.subviews.forEach({ view in
+                view.subviews.forEach({ view in
+                    if let view  = view as? UITextField {
+                        textField = view
+                    }
+                })
+            })
+            return textField
+            }()
+
+        if let searchText = searchTextField?.subviews.first {
+            searchText.backgroundColor = UIColor.white
+            searchText.layer.cornerRadius = 10
+            searchText.clipsToBounds = true
+        }
+        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor.gray
+
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Digite o nome da imagem"
+        searchController.searchBar.searchBarStyle = .prominent
+        searchController.searchBar.backgroundColor = UIColor.white
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+}
+
+extension BookViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let name = searchBar.text else { return }
+    }
+
+    func didPresentSearchController(_ searchController: UISearchController) {
+        self.searchController.searchBar.becomeFirstResponder()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchController.searchBar.sizeToFit()
     }
 }
 
 extension BookViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.presenter.getCountCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,4 +130,23 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         return 5
     }
 
+}
+
+extension BookViewController: BookProtocol {
+
+    func show() {
+        self.collectionView.reloadData()
+    }
+
+    func showLoading() {
+
+    }
+
+    func dismissLoading() {
+
+    }
+
+    func show(error: Error) {
+
+    }
 }

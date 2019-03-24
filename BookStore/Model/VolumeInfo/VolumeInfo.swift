@@ -11,17 +11,17 @@ import Foundation
 struct VolumeInfo: Codable {
 
     let title: String
-    let authors: [String]
+    let authors: [String]?
     let publisher: String
-    let publishedDate: String
-    let description: String
-    let industryIdentifiers: [IndustryIdentifiers]
-    let pageCount: Int
+    let publishedDate: String?
+    let description: String?
+    let industryIdentifiers: [IndustryIdentifiers]?
+    let pageCount: Int?
     let printType: String
-    let categories: [String]
+    let categories: [String]?
     let imageLinks: ImageLinks
 
-    init(title: String, authors: [String], publisher: String, publishedDate: String, description: String, industryIdentifiers: [IndustryIdentifiers], pageCount: Int, printType: String, categories:[String], imageLinks: ImageLinks) {
+    init(title: String, authors: [String]?, publisher: String, publishedDate: String?, description: String?, industryIdentifiers: [IndustryIdentifiers]?, pageCount: Int?, printType: String, categories:[String]?, imageLinks: ImageLinks) {
         self.title = title
         self.authors = authors
         self.publisher = publisher

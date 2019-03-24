@@ -11,14 +11,12 @@ import Foundation
 struct SaleInfo: Codable {
 
     let country: String
-    let saleAbility: String
-    let listPrice: Price
-    let retailPrice: Price
-    let buyLink: String
+    let listPrice: Price?
+    let retailPrice: Price?
+    let buyLink: String?
 
-    init(country: String, saleAbility: String, listPrice: Price, retailPrice: Price, buyLink: String) {
+    init(country: String, listPrice: Price?, retailPrice: Price?, buyLink: String?) {
         self.country = country
-        self.saleAbility = saleAbility
         self.listPrice = listPrice
         self.retailPrice = retailPrice
         self.buyLink = buyLink
@@ -26,7 +24,6 @@ struct SaleInfo: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case country = "country"
-        case saleAbility = "saleAbility"
         case listPrice = "listPrice"
         case retailPrice = "retailPrice"
         case buyLink = "buyLink"

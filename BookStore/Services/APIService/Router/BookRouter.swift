@@ -18,7 +18,7 @@ extension BookRouter: APIRouter {
         case .fetch(let id):
             return "volumes/\(id)"
         case .search(let name, let page):
-            return "volumes?q=\(name)&maxResults=10&startIndex=\(page)"
+            return "volumes?q=\(name)&maxResults=20&startIndex=\(page)"
         }
     }
 
