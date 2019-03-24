@@ -26,6 +26,10 @@
 		68E595942247BD9E00ACEC37 /* SaleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E595932247BD9E00ACEC37 /* SaleInfo.swift */; };
 		68E595972247C23600ACEC37 /* ImageLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E595962247C23600ACEC37 /* ImageLinks.swift */; };
 		68E5959B2247C2AA00ACEC37 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E5959A2247C2AA00ACEC37 /* Price.swift */; };
+		68E5959F2247C36C00ACEC37 /* BookRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E5959E2247C36C00ACEC37 /* BookRouter.swift */; };
+		68E595A12247C8BB00ACEC37 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E595A02247C8BB00ACEC37 /* BookService.swift */; };
+		68E595A32247C93100ACEC37 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E595A22247C93100ACEC37 /* SearchResponse.swift */; };
+		68E595A62247CB5B00ACEC37 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E595A52247CB5B00ACEC37 /* BookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		68E595932247BD9E00ACEC37 /* SaleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleInfo.swift; sourceTree = "<group>"; };
 		68E595962247C23600ACEC37 /* ImageLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLinks.swift; sourceTree = "<group>"; };
 		68E5959A2247C2AA00ACEC37 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		68E5959E2247C36C00ACEC37 /* BookRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRouter.swift; sourceTree = "<group>"; };
+		68E595A02247C8BB00ACEC37 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		68E595A22247C93100ACEC37 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		68E595A52247CB5B00ACEC37 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +129,7 @@
 		68A9CE69224685B6000CAFBD /* BookStore */ = {
 			isa = PBXGroup;
 			children = (
+				68E595A42247CB4700ACEC37 /* Controller */,
 				68E5958C2247B82700ACEC37 /* Model */,
 				68E595802247B54400ACEC37 /* Util */,
 				68E595792247B4CB00ACEC37 /* Services */,
@@ -154,6 +163,7 @@
 		68E595792247B4CB00ACEC37 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				68E5959C2247C34600ACEC37 /* APIService */,
 				68E5957A2247B4DA00ACEC37 /* APIClient */,
 			);
 			path = Services;
@@ -202,6 +212,7 @@
 				68E595992247C29800ACEC37 /* Sale */,
 				68E595982247C28200ACEC37 /* Book */,
 				68E595952247C22200ACEC37 /* VolumeInfo */,
+				68E595A22247C93100ACEC37 /* SearchResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +242,31 @@
 				68E5959A2247C2AA00ACEC37 /* Price.swift */,
 			);
 			path = Sale;
+			sourceTree = "<group>";
+		};
+		68E5959C2247C34600ACEC37 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				68E5959D2247C35500ACEC37 /* Router */,
+				68E595A02247C8BB00ACEC37 /* BookService.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		68E5959D2247C35500ACEC37 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				68E5959E2247C36C00ACEC37 /* BookRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		68E595A42247CB4700ACEC37 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				68E595A52247CB5B00ACEC37 /* BookViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,14 +404,18 @@
 				68E5959B2247C2AA00ACEC37 /* Price.swift in Sources */,
 				68E5958B2247B61A00ACEC37 /* Codable+Extensions.swift in Sources */,
 				68A9CE6B224685B6000CAFBD /* AppDelegate.swift in Sources */,
+				68E5959F2247C36C00ACEC37 /* BookRouter.swift in Sources */,
 				68E595882247B5E600ACEC37 /* APIClient.swift in Sources */,
 				68E595902247B8D300ACEC37 /* VolumeInfo.swift in Sources */,
 				68E595842247B59E00ACEC37 /* APIResult.swift in Sources */,
+				68E595A12247C8BB00ACEC37 /* BookService.swift in Sources */,
 				68E595942247BD9E00ACEC37 /* SaleInfo.swift in Sources */,
 				68E595972247C23600ACEC37 /* ImageLinks.swift in Sources */,
 				68E595822247B55E00ACEC37 /* EnvironmentConfig.swift in Sources */,
+				68E595A32247C93100ACEC37 /* SearchResponse.swift in Sources */,
 				68E5958E2247B83900ACEC37 /* Book.swift in Sources */,
 				68E5957F2247B52A00ACEC37 /* APIRouter.swift in Sources */,
+				68E595A62247CB5B00ACEC37 /* BookViewController.swift in Sources */,
 				68E5957D2247B50B00ACEC37 /* APIClientProtocol.swift in Sources */,
 				68E595862247B5BE00ACEC37 /* APIError.swift in Sources */,
 			);
