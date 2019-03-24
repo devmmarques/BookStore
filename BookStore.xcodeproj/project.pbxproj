@@ -36,6 +36,7 @@
 		68E595AC2247E70600ACEC37 /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E595AB2247E70600ACEC37 /* BookCell.xib */; };
 		68EC7DA72247EDD600A1429C /* BookProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC7DA62247EDD600A1429C /* BookProtocol.swift */; };
 		68EC7DA92247EE2900A1429C /* BookPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC7DA82247EE2900A1429C /* BookPresenter.swift */; };
+		68EC7DAB2247F95300A1429C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC7DAA2247F95300A1429C /* UIImage+Extensions.swift */; };
 		A64D862B857A734CD1DDA149 /* Pods_BookStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62740B77B8A5A0C473A654B /* Pods_BookStore.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		68E595AB2247E70600ACEC37 /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
 		68EC7DA62247EDD600A1429C /* BookProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProtocol.swift; sourceTree = "<group>"; };
 		68EC7DA82247EE2900A1429C /* BookPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPresenter.swift; sourceTree = "<group>"; };
+		68EC7DAA2247F95300A1429C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		79CB0BD0F23CB615AAD7216C /* Pods-BookStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookStore.debug.xcconfig"; path = "Target Support Files/Pods-BookStore/Pods-BookStore.debug.xcconfig"; sourceTree = "<group>"; };
 		9D5CAA601FC81C58B30EA5ED /* Pods-BookStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookStoreTests.debug.xcconfig"; path = "Target Support Files/Pods-BookStoreTests/Pods-BookStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E079D19FA384DDADBFE7AC8F /* Pods_BookStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				68E5958A2247B61A00ACEC37 /* Codable+Extensions.swift */,
+				68EC7DAA2247F95300A1429C /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				TargetAttributes = {
 					68A9CE66224685B6000CAFBD = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					68A9CE7A224685B8000CAFBD = {
 						CreatedOnToolsVersion = 10.1;
@@ -589,6 +593,7 @@
 				68E595822247B55E00ACEC37 /* EnvironmentConfig.swift in Sources */,
 				68EC7DA92247EE2900A1429C /* BookPresenter.swift in Sources */,
 				68E595A32247C93100ACEC37 /* SearchResponse.swift in Sources */,
+				68EC7DAB2247F95300A1429C /* UIImage+Extensions.swift in Sources */,
 				68EC7DA72247EDD600A1429C /* BookProtocol.swift in Sources */,
 				68E5958E2247B83900ACEC37 /* Book.swift in Sources */,
 				68E5957F2247B52A00ACEC37 /* APIRouter.swift in Sources */,
@@ -770,6 +775,7 @@
 			baseConfigurationReference = 79CB0BD0F23CB615AAD7216C /* Pods-BookStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BookStore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -778,6 +784,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.mmarques.BookStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -788,6 +796,7 @@
 			baseConfigurationReference = 52A03D537BB619B0702621E5 /* Pods-BookStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BookStore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -796,6 +805,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.mmarques.BookStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

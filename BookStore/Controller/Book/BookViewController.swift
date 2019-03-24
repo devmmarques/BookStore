@@ -73,7 +73,7 @@ extension BookViewController: UISearchResultsUpdating {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let name = searchBar.text else { return }
+        
     }
 
     func didPresentSearchController(_ searchController: UISearchController) {
@@ -95,7 +95,7 @@ extension BookViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as! BookCell
-        cell.configure()
+        cell.configure(book: self.presenter.getBook(index: indexPath.row))
         return cell
     }
 }
