@@ -1,0 +1,265 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 383,
+    "items": [
+        {
+            "kind": "books#volume",
+            "id": "KWuCCwAAQBAJ",
+            "etag": "9dA2pwfb5cI",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/KWuCCwAAQBAJ",
+            "volumeInfo": {
+                "title": "iOS: Programe para iPhone e iPad",
+                "authors": [
+                    "Rafael Steil"
+                ],
+                "publisher": "Editora Casa do Código",
+                "publishedDate": "2015-03-01",
+                "description": "Uma grande parcela do mercado de celulares e tablets atualmente pertence à Apple, com seus famosos iPhone e iPad. Aprenda a criar aplicações que explorem o máximo da poderosa plataforma sobre a qual esses dispositivos funcionam, o iOS. Aprenda o Objective-C de forma descomplicada e comece em poucas horas a criar suas aplicações e testá-las em seus dispositivos e nos emuladores. Nessa nova versão, completamente revisada, há 100% de compatibilidade com Xcode 5 e iOS 7, um novo capítulo sobre storyboards, todas as imagens com o layout do iOS 7 e exemplos revisados e aprimorados. Conheça todos os nossos livros em www.casadocodigo.com.br.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788555190025"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "8555190029"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 264,
+                "printType": "BOOK",
+                "categories": [
+                    "Computers"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=KWuCCwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=KWuCCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "pt",
+                "previewLink": "http://books.google.com.br/books?id=KWuCCwAAQBAJ&pg=PP12&dq=ios&hl=&cd=1&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=KWuCCwAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://market.android.com/details?id=book-KWuCCwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "BR",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 44.9,
+                    "currencyCode": "BRL"
+                },
+                "retailPrice": {
+                    "amount": 44.9,
+                    "currencyCode": "BRL"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=KWuCCwAAQBAJ&rdid=book-KWuCCwAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 44900000,
+                            "currencyCode": "BRL"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 44900000,
+                            "currencyCode": "BRL"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "BR",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com.br/books/download/iOS_Programe_para_iPhone_e_iPad-sample-epub.acsm?id=KWuCCwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com.br/books/download/iOS_Programe_para_iPhone_e_iPad-sample-pdf.acsm?id=KWuCCwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=KWuCCwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Aplicativos para <b>iOS</b> seguem uma estrutura relativamente simples, se formos <br>\ncomparar com aplicações que rodam em um browser ou no desktop. Além disso, <br>\nao contrário de outros sistemas mobile, como Android, detalhes no <b>iOS</b> são mais<br>\n&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "x6qjAwAAQBAJ",
+            "etag": "OZfY87HlGWo",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/x6qjAwAAQBAJ",
+            "volumeInfo": {
+                "title": "Aprendendo Programação iOS",
+                "subtitle": "Do Xcode à App Store",
+                "authors": [
+                    "Alasdair Allan"
+                ],
+                "publisher": "Novatec Editora",
+                "publishedDate": "2013-07-01",
+                "description": "Tenha acesso a uma rápida introdução à programação para iPhone, iPad e iPod touch. Com este guia fácil de acompanhar, você aprenderá a desenvolver seu primeiro aplicativo iOS comercializável, da abertura do Xcode ao envio de seu produto para a App Store. Quer você seja um desenvolvedor iniciante em programação para Mac ou um desenvolvedor experiente no Mac, pronto para trabalhar com o iOS, este é o seu livro. Você aprenderá na prática a utilizar a Objective-C e seus principais frameworks, escrevendo vários aplicativos iOS de exemplo, dando a você as habilidades básicas para a construção de seus próprios aplicativos de forma independente. Recheado de exemplos de código, este livro foi reformulado e atualizado para o iOS 6 e o Xcode 4. - Descubra as vantagens da construção de aplicativos iOS nativos. - Dê seus primeiros passos com a Objective-C e os frameworks Cocoa Touch. - Aprofunde-se nas classes de visão de tabela para construção de interfaces de usuário. - Manipule a entrada de dados, processe documentos XML e JSON e armazene dados no SQLite. - Utilize sensores iOS, incluindo o acelerômetro, o magnetômetro, a câmera e o GPS. - Construa aplicativos que utilizam os frameworks Core Location e MapKit. - Integre o serviço iCloud da Apple em seus aplicativos. - Percorra o processo de distribuição de seu aplicativo na App Store. \"O livro Aprendendo programação iOS aborda tudo que um programador iOS aspirante necessita saber para dar seus primeiros passos nessa plataforma. Um livro completo e de leitura muito agradável. Recomendado!\" — Fraser Speirs, Diretor da Connected Flow, Ltd. e criador do FlickrExport",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788575223635"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "8575223631"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 448,
+                "printType": "BOOK",
+                "categories": [
+                    "Computers"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=x6qjAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=x6qjAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "pt",
+                "previewLink": "http://books.google.com.br/books?id=x6qjAwAAQBAJ&pg=PA25&dq=ios&hl=&cd=2&source=gbs_api",
+                "infoLink": "http://books.google.com.br/books?id=x6qjAwAAQBAJ&dq=ios&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Aprendendo_Programa%C3%A7%C3%A3o_iOS.html?hl=&id=x6qjAwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "BR",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "BR",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=x6qjAwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "No entanto, se isso acontecer com você, o passo final do registro como um <br>\ndesenvolver <b>iOS</b> será verificar seu endereço de email. Ainda que esse email <br>\nseja, na maioria dos casos, enviado de forma razoavelmente rápida (dentro de <br>\numa ou&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "4IG_CwAAQBAJ",
+            "etag": "xuRQR0Kfdzo",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/4IG_CwAAQBAJ",
+            "volumeInfo": {
+                "title": "Guia Android vs IOS",
+                "subtitle": "",
+                "authors": [
+                    "On Line Editora"
+                ],
+                "publisher": "On Line Editora",
+                "publishedDate": "2016-03-16",
+                "description": "Os usuários que adquirem produtos por motivos estritamente relacionados às suas necessidades de uso e não têm problema algum em migrar para esta ou aquela plataforma, desde que tal mudança satisfaça seus interesses. Há também aqueles que relutam em trocar de sistema por razões práticas, por exemplo, para evitar a dor de cabeça de ter de transferirtodas as suas informações e instalar/substituir novos apps. Por último há os chamados fanboys*, que consideram o aparelho/sistema que utilizam como sendo melhor do que os outros, e não mudam de opinião tão facilmente – estes, mais do que usuários, são seguidores. Este guia não é um comparativo do tipo \"este ganha\" e \"aquele perde\". Nosso objetivo é ressaltar as semelhanças e diferenças entre as plataformas, para que o usuário entenda melhor o sistema utilizado e conheça também aquele com o qual ele ainda não teve contato. Assim, poderá, se considerar importante, fazer a migração – nesse caso, dedicaremos uma seção que explica passo a passo, com fotos ilustrativas, como fazer a mudança (de Android para iOS, e vice-versa), sem traumas ou perda de arquivos e informações durante o processo. Vamos analisar como cada sistema lida com os principais recursos e apps nativos, e explicaremos como cada um trata a questão da segurança e privacidade, bem como eles gerenciam as atualizações, a instalação de programas, entre outros. Para este trabalho, adotamos a versão Android Lollipop (5.1.1) instalada em um Galaxy S6 Edge+ e a versão iOS 9 instalada em um iPhone. Vale lembrar que essas versões são praticamente as mesmas em tablets. É importante lembrar que o comparativo a seguir não é de aparelhos, mas de sistema, pois o Android pode ser encontrado em diferentes dispositivos (smarphones e tablets) de variados fabricantes e, do mesmo modo, o iOS 9 integra desde o iPhone 4S até os modelos mais recentes, como o iPhone 6 e suas variações (6S, 6 Plus e 6S Plus) e iPads (exceto o iPad 1). Isso significa que o foco desse trabalho é a construção, os recursos e a usabilidade dos dois sistemas.",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 116,
+                "printType": "BOOK",
+                "categories": [
+                    "Computers"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "1.3.1.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=4IG_CwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=4IG_CwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "pt",
+                "previewLink": "http://books.google.com.br/books?id=4IG_CwAAQBAJ&pg=PA7&dq=ios&hl=&cd=3&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=4IG_CwAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://market.android.com/details?id=book-4IG_CwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "BR",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 9.99,
+                    "currencyCode": "BRL"
+                },
+                "retailPrice": {
+                    "amount": 9.99,
+                    "currencyCode": "BRL"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=4IG_CwAAQBAJ&rdid=book-4IG_CwAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 9990000,
+                            "currencyCode": "BRL"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 9990000,
+                            "currencyCode": "BRL"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "BR",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true
+                },
+                "pdf": {
+                    "isAvailable": true
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=4IG_CwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Nome original: iPhone OS Desenvolvedor: Apple Dispositivos: iPhone, iPad, <br>\niPod touch, Apple Watch e AppleTV Loja de apps: mais de 1,5 milhão de apps <br>\nVersão mais recente: <b>iOS</b> 9.2 sistema <b>iOS</b> nasceu com o primeiro iPhone da <br>\nApple,&nbsp;..."
+            }
+        }
+    ]
+}
