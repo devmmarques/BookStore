@@ -95,7 +95,8 @@ extension BookViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Cell.bookCell, for: indexPath) as! BookCell
-        cell.configure(book: self.presenter.getBook(index: indexPath.row))
+        let book = self.presenter.getBook(index: indexPath.row)
+        cell.configure(book: book, isFavorite: self.presenter.isFavorite(id: book.id), delegate: self)
         return cell
     }
 }
@@ -148,5 +149,12 @@ extension BookViewController: BookProtocol {
 
     func show(error: Error) {
 
+    }
+}
+
+extension BookViewController: BookCellDelegate {
+
+    func favorite(id: String) {
+        self.presenter.saveBook(id: id)
     }
 }

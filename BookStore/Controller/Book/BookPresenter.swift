@@ -34,6 +34,30 @@ final class BookPresenter {
         }
     }
 
+    func saveBook(id: String) {
+        if var listBookIds = self.serviceAPI.loadBooks() {
+            if listBookIds.contains(id) {
+                let newList = listBookIds.filter { $0 != id }
+                serviceAPI.removeBooks()
+                serviceAPI.saveBooks(books: newList)
+            } else {
+                listBookIds.append(id)
+                serviceAPI.removeBooks()
+                serviceAPI.saveBooks(books: listBookIds)
+            }
+        } else {
+            serviceAPI.saveBooks(books: [id])
+        }
+        self.viewProtocol.show()
+    }
+
+    func isFavorite(id: String) -> Bool{
+        if let listBookIds = self.serviceAPI.loadBooks() {
+            return listBookIds.contains(id)
+        }
+        return false
+    }
+
     public func getCountCell() -> Int {
         return listBook.count
     }

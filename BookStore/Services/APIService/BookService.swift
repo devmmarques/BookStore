@@ -39,16 +39,16 @@ final class BookService: NSObject, BookServiceProtocol {
 
 extension BookService {
 
-    func saveBooks(books: [Int]) {
+    func saveBooks(books: [String]) {
         books.store(key: Const.UserDefault.booksFavorite)
     }
 
-    func loadBooks() -> [Int]? {
-        return [Int].load(key: Const.UserDefault.booksFavorite)
+    func loadBooks() -> [String]? {
+        return [String].load(key: Const.UserDefault.booksFavorite)
     }
 
     func removeBooks() {
-        [Int].remove(key: Const.UserDefault.booksFavorite)
+        [String].remove(key: Const.UserDefault.booksFavorite)
     }
 
 
