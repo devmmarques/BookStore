@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="ReN-xl-F4z" customClass="BookCell" customModule="BookStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8bL-tk-nm5">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="8bL-tk-nm5" secondAttribute="bottom" id="Azh-2r-joh"/>
+                <constraint firstItem="8bL-tk-nm5" firstAttribute="leading" secondItem="ReN-xl-F4z" secondAttribute="leading" id="kQw-Jr-rwC"/>
+                <constraint firstItem="8bL-tk-nm5" firstAttribute="top" secondItem="ReN-xl-F4z" secondAttribute="top" id="w4T-pF-kZC"/>
+                <constraint firstAttribute="trailing" secondItem="8bL-tk-nm5" secondAttribute="trailing" id="weT-fG-F2y"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="mnb-KB-2kw"/>
+            <connections>
+                <outlet property="imageBook" destination="8bL-tk-nm5" id="hAl-9E-03i"/>
+            </connections>
+            <point key="canvasLocation" x="148.80000000000001" y="40.479760119940032"/>
+        </collectionViewCell>
+    </objects>
+</document>
