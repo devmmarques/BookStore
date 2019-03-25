@@ -99,6 +99,16 @@ extension BookViewController: UICollectionViewDataSource {
         cell.configure(book: book, isFavorite: self.presenter.isFavorite(id: book.id), delegate: self)
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
+        if self.presenter.getTotalBooks() > Const.limitBookFetch {
+            let lastElement = self.presenter.getCountCell() - 1
+            if indexPath.row == lastElement {
+                self.presenter.fetch(name: "ios")
+            }
+        }
+    }
 }
 
 extension BookViewController: UICollectionViewDelegate {
@@ -106,6 +116,7 @@ extension BookViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     }
+
 }
 
 extension BookViewController: UICollectionViewDelegateFlowLayout {
@@ -116,7 +127,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         let padding: CGFloat =  20
         let collectionViewSize = collectionView.frame.size.width - padding
 
-        return CGSize(width: collectionViewSize/2, height: 240)
+        return CGSize(width: collectionViewSize/2, height: 260)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -140,16 +151,19 @@ extension BookViewController: BookProtocol {
     }
 
     func showLoading() {
-
+        UIAlertController().loading(viewController: self)
     }
 
     func showBuyBook(url: String) {
         guard let urlBook = URL(string: url) else { return }
-        UIApplication.shared.openURL(urlBook)
+        UIApplication.shared.open(urlBook, options: [:], completionHandler: nil)
     }
 
     func dismissLoading() {
-
+        self.searchController.dismiss(animated: false) {
+            UIAlertController().dismissLoading(viewController: self)
+        }
+        UIAlertController().dismissLoading(viewController: self)
     }
 
     func show(error: Error) {

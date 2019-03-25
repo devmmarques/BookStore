@@ -12,7 +12,9 @@ final class BookPresenter {
 
     private let viewProtocol: BookProtocol
     private let serviceAPI: BookService
-    private let currentPage = 0
+    private var currentPage = 0
+    private var totalBook = 0
+    private var firstFetch = true
 
     private var listBook: [Book] = []
 
@@ -23,15 +25,33 @@ final class BookPresenter {
 
     func fetch(name: String) {
         self.viewProtocol.showLoading()
-        self.serviceAPI.fetchBook(name: name, page: currentPage) { [weak self] result in
-            switch result {
-            case let .success(response):
-                self?.listBook = response.items
-                self?.viewProtocol.show()
-            case .failure(let error):
-                print(error)
+
+        if self.validFetchBook() {
+            self.serviceAPI.fetchBook(name: name, page: currentPage) { [weak self] result in
+                switch result {
+                case let .success(response):
+                    self?.mountBook(response: response)
+                    self?.viewProtocol.show()
+                    self?.viewProtocol.dismissLoading()
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
+    }
+
+    private func mountBook(response: SearchResponse) {
+        self.totalBook =  response.totalItems
+        self.listBook += response.items
+        self.currentPage += 1
+        self.firstFetch = false
+    }
+
+    private func validFetchBook() -> Bool {
+        if self.listBook.count >= self.totalBook && !firstFetch{
+            return false
+        }
+        return true
     }
 
     func saveBook(id: String) {
@@ -64,6 +84,10 @@ final class BookPresenter {
 
     public func getBook(index: Int) -> Book {
         return self.listBook[index]
+    }
+
+    public func getTotalBooks() -> Int {
+        return totalBook
     }
 
     public func openBuyBook(id: String) {

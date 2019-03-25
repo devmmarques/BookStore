@@ -10,6 +10,8 @@ import Foundation
 
 struct Const {
 
+    static let limitBookFetch = 20
+
     struct UserDefault {
         static let booksFavorite = "booksFavoriteKey"
     }
@@ -17,5 +19,4 @@ struct Const {
     struct Cell {
         static let bookCell = "BookCell"
     }
-
 }

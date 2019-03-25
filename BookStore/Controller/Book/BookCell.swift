@@ -19,6 +19,7 @@ final class BookCell: UICollectionViewCell {
     @IBOutlet weak var imageBook: UIImageView!
     @IBOutlet weak var titleBook: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!
 
     private weak var delegate: BookCellDelegate?
     private var idBook: String?
@@ -29,10 +30,21 @@ final class BookCell: UICollectionViewCell {
         titleBook.text = book.volumeInfo.title
         self.idBook = book.id
         /*
-         Poderia utilizar SDWebImage para ajudar no cache, mas preferi usar dessa forma simples com uma extension de UIImage
+         Poderia utilizar SDWebImage para ajudar no cache, mas preferi usar dessa forma simples com uma extension de UIImage ao invés de incluir um POD
         */
         imageBook.imageFromURL(urlString: book.volumeInfo.imageLinks.thumbnail)
         configureFavorite(isFavorite: isFavorite)
+        configureLayoutView()
+
+    }
+
+    private func configureLayoutView(){
+
+        buyButton.roundedCorner()
+        buyButton.backgroundColor = UIColor.greenBook
+
+        imageBook.roundedCorner()
+        imageBook.applyFormShadow()
     }
 
     private func configureFavorite(isFavorite: Bool) {
