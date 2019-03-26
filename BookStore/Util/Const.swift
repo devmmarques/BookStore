@@ -11,6 +11,7 @@ import Foundation
 struct Const {
 
     static let limitBookFetch = 20
+    static let nameBookDefault = "iOS"
 
     struct UserDefault {
         static let booksFavorite = "booksFavoriteKey"
@@ -18,5 +19,9 @@ struct Const {
 
     struct Cell {
         static let bookCell = "BookCell"
+    }
+
+    struct Placeholder {
+        static let searchBook = "Digite o nome do livro"
     }
 }

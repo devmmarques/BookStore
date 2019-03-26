@@ -14,7 +14,7 @@ final class BookPresenter {
     private let serviceAPI: BookService
     private var currentPage = 0
     private var totalBook = 0
-    private var firstFetch = true
+    private var nameBook = ""
 
     private var listBook: [Book] = []
 
@@ -24,8 +24,8 @@ final class BookPresenter {
     }
 
     func fetch(name: String) {
-        self.viewProtocol.showLoading()
-
+        self.viewProtocol.showLoading(message: name)
+        self.nameBook = name
         if self.validFetchBook() {
             self.serviceAPI.fetchBook(name: name, page: currentPage) { [weak self] result in
                 switch result {
@@ -44,11 +44,10 @@ final class BookPresenter {
         self.totalBook =  response.totalItems
         self.listBook += response.items
         self.currentPage += 1
-        self.firstFetch = false
     }
 
     private func validFetchBook() -> Bool {
-        if self.listBook.count >= self.totalBook && !firstFetch{
+        if self.listBook.count >= self.totalBook && self.listBook.count > 0{
             return false
         }
         return true
@@ -88,6 +87,16 @@ final class BookPresenter {
 
     public func getTotalBooks() -> Int {
         return totalBook
+    }
+
+    public func getNameSearchBook() -> String {
+        return nameBook.isEmpty ? Const.nameBookDefault : nameBook
+    }
+
+    public func cleanListBook() {
+        self.listBook = []
+        self.currentPage = 0
+        self.totalBook = 0
     }
 
     public func openBuyBook(id: String) {

@@ -23,13 +23,13 @@ final class BookViewController: UIViewController, UISearchBarDelegate, UISearchC
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: "BookCell")
+        collectionView.register(UINib(nibName: Const.Cell.bookCell, bundle: nil), forCellWithReuseIdentifier: Const.Cell.bookCell)
         configureSearchController()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.presenter.fetch(name: "ios")
+        self.presenter.fetch(name: self.presenter.getNameSearchBook())
     }
 }
 
@@ -47,7 +47,7 @@ extension BookViewController {
                 })
             })
             return textField
-            }()
+        }()
 
         if let searchText = searchTextField?.subviews.first {
             searchText.backgroundColor = UIColor.white
@@ -58,11 +58,14 @@ extension BookViewController {
 
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Digite o nome da imagem"
+        searchController.searchBar.placeholder = Const.Placeholder.searchBook
         searchController.searchBar.searchBarStyle = .prominent
-        searchController.searchBar.backgroundColor = UIColor.white
+        searchController.searchBar.backgroundColor = UIColor.greenBook
+        searchController.hidesNavigationBarDuringPresentation = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
+
+        self.navigationController?.navigationBar.barTintColor = UIColor.greenBook
     }
 }
 
@@ -73,7 +76,12 @@ extension BookViewController: UISearchResultsUpdating {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        guard let name = searchBar.text else { return }
+
+        if name.count > 3 {
+            self.presenter.cleanListBook()
+            self.presenter.fetch(name: name)
+        }
     }
 
     func didPresentSearchController(_ searchController: UISearchController) {
@@ -105,7 +113,7 @@ extension BookViewController: UICollectionViewDataSource {
         if self.presenter.getTotalBooks() > Const.limitBookFetch {
             let lastElement = self.presenter.getCountCell() - 1
             if indexPath.row == lastElement {
-                self.presenter.fetch(name: "ios")
+                self.presenter.fetch(name: self.presenter.getNameSearchBook())
             }
         }
     }
@@ -150,8 +158,8 @@ extension BookViewController: BookProtocol {
         self.collectionView.reloadData()
     }
 
-    func showLoading() {
-        UIAlertController().loading(viewController: self)
+    func showLoading(message: String) {
+        UIAlertController().loading(viewController: self, name: message.isEmpty ? self.presenter.getNameSearchBook() : message)
     }
 
     func showBuyBook(url: String) {
