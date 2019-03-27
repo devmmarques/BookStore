@@ -44,6 +44,7 @@ final class BookViewController: UIViewController {
             self.presenter.fetch(name: self.presenter.getNameSearchBook())
         case .favorite:
             print("Favorito")
+            self.presenter.fetchFavorite()
         }
     }
 }
