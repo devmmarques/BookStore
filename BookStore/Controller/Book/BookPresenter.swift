@@ -85,7 +85,7 @@ final class BookPresenter {
     }
 
     public func getNameSearchBook() -> String {
-        return nameBook.isEmpty ? Const.nameBookDefault : nameBook
+        return nameBook
     }
 
     public func cleanListBook() {

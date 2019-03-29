@@ -24,5 +24,10 @@ class StoryboardUtil {
         let bookDetailViewController = StoryboardUtil().viewControllerWith(storeBoardName: "DetailBook", controllerName: "BookDetailViewController")
         return bookDetailViewController as! BookDetailViewController
     }
+    
+    static func bookFavoriteViewController() -> BookFavoriteViewController {
+        let bookViewController = StoryboardUtil().viewControllerWith(storeBoardName: "BookFavorite", controllerName: "BookFavoriteViewController")
+        return  bookViewController as! BookFavoriteViewController
+    }
 
 }

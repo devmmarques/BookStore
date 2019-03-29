@@ -16,14 +16,14 @@ enum BookType: Int {
 final class BookContainerViewController: UIViewController {
     
     private let bookViewController: BookViewController
-    private let favoriteViewController: BookViewController
+    private let favoriteViewController: BookFavoriteViewController
     
     init() {
         
         bookViewController = StoryboardUtil.bookViewController()
         bookViewController.bookType = .home
-        favoriteViewController = StoryboardUtil.bookViewController()
-        favoriteViewController.bookType = .favorite
+        favoriteViewController = StoryboardUtil.bookFavoriteViewController()
+        
         
         super.init(nibName: nil, bundle: nil)
         

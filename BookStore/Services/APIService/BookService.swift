@@ -63,6 +63,7 @@ final class BookService: NSObject, BookServiceProtocol {
                 }
             }
         }
+     completion(.success(books))
     }
     
     public func fetchBookBy(id: String, completion: @escaping (APIResult<Book>) -> Void) {
