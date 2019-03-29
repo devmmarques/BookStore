@@ -17,7 +17,7 @@ final class BookPresenter {
     private var nameBook = ""
 
     private var listBook: [Book] = []
-
+    
     init(viewProtocol: BookProtocol, serviceAPI: BookService) {
         self.viewProtocol = viewProtocol
         self.serviceAPI = serviceAPI
@@ -34,8 +34,21 @@ final class BookPresenter {
                     self?.viewProtocol.show()
                     self?.viewProtocol.dismissLoading()
                 case .failure(let error):
-                    print(error)
+                    self?.viewProtocol.show(error: error)
                 }
+            }
+        }
+    }
+    
+    func fetchFavorite() {
+        self.serviceAPI.fetchBookBy() { [weak self] result in
+            switch result {
+            case let .success(response):
+                self?.mountFavorite(books: response)
+                self?.viewProtocol.show()
+                self?.viewProtocol.dismissLoading()
+            case .failure(let error):
+                self?.viewProtocol.show(error: error)
             }
         }
     }
@@ -44,6 +57,10 @@ final class BookPresenter {
         self.totalBook =  response.totalItems
         self.listBook += response.items
         self.currentPage += 1
+    }
+    
+    private func mountFavorite(books: [Book]) {
+        self.listBook = books
     }
 
     private func validFetchBook() -> Bool {
@@ -80,7 +97,7 @@ final class BookPresenter {
     public func getCountCell() -> Int {
         return listBook.count
     }
-
+    
     public func getBook(index: Int) -> Book {
         return self.listBook[index]
     }

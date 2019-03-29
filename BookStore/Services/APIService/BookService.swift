@@ -35,6 +35,35 @@ final class BookService: NSObject, BookServiceProtocol {
             }
         }
     }
+    
+    func fetchBookBy(completion: @escaping (APIResult<[Book]>) -> Void) {
+        guard let bookIds = loadBooks(), !bookIds.isEmpty else {
+            completion(.success([]))
+            return
+        }
+        
+        var books = [Book]()
+        var alreadyFailed = false
+        
+        for id in bookIds {
+            let router = BookRouter.fetch(id: id)
+            apiClient.request(router: router){ (response: APIResult<Book>) in
+                guard alreadyFailed == false else { return }
+                
+                switch response {
+                case let .success(value):
+                    
+                    books.append(value)
+                    if books.count == bookIds.count {
+                        completion(.success(books))
+                    }
+                case let .failure(error):
+                    alreadyFailed = true
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }
 
 extension BookService {

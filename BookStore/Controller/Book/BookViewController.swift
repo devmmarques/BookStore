@@ -8,13 +8,15 @@
 
 import UIKit
 
-final class BookViewController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
+final class BookViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     // Mark: Properties
     let searchController = UISearchController(searchResultsController: nil)
+    public var containerController: UIViewController!
+    public var bookType: BookType?
 
     private lazy var presenter: BookPresenter = {
         let presenter = BookPresenter(viewProtocol: self, serviceAPI: BookService())
@@ -24,74 +26,26 @@ final class BookViewController: UIViewController, UISearchBarDelegate, UISearchC
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: Const.Cell.bookCell, bundle: nil), forCellWithReuseIdentifier: Const.Cell.bookCell)
-        configureSearchController()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.presenter.fetch(name: self.presenter.getNameSearchBook())
+        self.configure()
     }
-}
-
-extension BookViewController {
-
-    private func configureSearchController() {
-
-        let searchTextField: UITextField? = { [unowned self] in
-            var textField: UITextField?
-            searchController.searchBar.subviews.forEach({ view in
-                view.subviews.forEach({ view in
-                    if let view  = view as? UITextField {
-                        textField = view
-                    }
-                })
-            })
-            return textField
-        }()
-
-        if let searchText = searchTextField?.subviews.first {
-            searchText.backgroundColor = UIColor.white
-            searchText.layer.cornerRadius = 10
-            searchText.clipsToBounds = true
+    
+    
+    private func configure() {
+    
+        guard let bookType = self.bookType else { return }
+        
+        switch bookType {
+        case .home:
+            print("Home")
+            self.presenter.fetch(name: self.presenter.getNameSearchBook())
+        case .favorite:
+            print("Favorito")
+            self.presenter.fetchFavorite()
         }
-        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor.gray
-
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = Const.Placeholder.searchBook
-        searchController.searchBar.searchBarStyle = .prominent
-        searchController.searchBar.backgroundColor = UIColor.greenBook
-        searchController.hidesNavigationBarDuringPresentation = false
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-
-        self.navigationController?.navigationBar.barTintColor = UIColor.greenBook
-    }
-}
-
-extension BookViewController: UISearchResultsUpdating {
-
-    func updateSearchResults(for searchController: UISearchController) {
-
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let name = searchBar.text else { return }
-
-        if name.count > 3 {
-            self.presenter.cleanListBook()
-            self.presenter.fetch(name: name)
-        }
-    }
-
-    func didPresentSearchController(_ searchController: UISearchController) {
-        self.searchController.searchBar.becomeFirstResponder()
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.showsCancelButton = false
-        searchController.searchBar.sizeToFit()
     }
 }
 
@@ -175,7 +129,9 @@ extension BookViewController: BookProtocol {
     }
 
     func show(error: Error) {
-
+        dismissLoading()
+        let alert = BookAlertController(title: "Error", message: error.localizedDescription, image: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
