@@ -34,7 +34,7 @@ final class BookPresenter {
                     self?.viewProtocol.show()
                     self?.viewProtocol.dismissLoading()
                 case .failure(let error):
-                    print(error)
+                    self?.viewProtocol.show(error: error)
                 }
             }
         }
@@ -48,7 +48,7 @@ final class BookPresenter {
                 self?.viewProtocol.show()
                 self?.viewProtocol.dismissLoading()
             case .failure(let error):
-                print(error)
+                self?.viewProtocol.show(error: error)
             }
         }
     }

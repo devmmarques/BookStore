@@ -129,7 +129,9 @@ extension BookViewController: BookProtocol {
     }
 
     func show(error: Error) {
-
+        dismissLoading()
+        let alert = BookAlertController(title: "Error", message: error.localizedDescription, image: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
