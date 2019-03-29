@@ -10,7 +10,7 @@ import Foundation
 
 protocol BookProtocol: AnyObject {
     func show()
-    func showLoading(message: String)
+    func showLoading()
     func showBuyBook(url: String)
     func dismissLoading()
     func show(error: Error)

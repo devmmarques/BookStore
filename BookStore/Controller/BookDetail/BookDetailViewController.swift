@@ -25,28 +25,23 @@ final class BookDetailViewController: UIViewController {
     // MARK: Properties
     var idBook = ""
     
-    
     private lazy var presenter: BookDetailPresenter = {
         let presenter = BookDetailPresenter(viewProtocol: self, serviceAPI: BookService())
         return presenter
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.fetchFavorite(id: idBook)
         constraintTopDetailView.constant = CGFloat(700)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.presenter.fetchFavorite(id: idBook)
         viewDetail.roundedCorner()
         showView()
         configureDismiss()
     }
-    
     
     @IBAction func closerView(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -60,13 +55,12 @@ final class BookDetailViewController: UIViewController {
         self.presenter.buyBook()
     }
     
-    
     private func configureBook () {
         self.titleLabel.text = self.presenter.getBook().volumeInfo.title
+        
         if let description = self.presenter.getBook().volumeInfo.description {
             self.descriptionLabel.attributedText = description.html2Attributed
         }
-        
         
         if let _ = self.presenter.getBook().saleInfo.buyLink {
             self.buyButton.alpha = 1.0
@@ -74,7 +68,9 @@ final class BookDetailViewController: UIViewController {
             self.buyButton.alpha = 0.0
         }
         
-        self.bookDetailImage.imageFromURL(urlString: self.presenter.getBook().volumeInfo.imageLinks.thumbnail)
+        if let image = self.presenter.getBook().volumeInfo.imageLinks {
+            self.bookDetailImage.imageFromURL(urlString: image.thumbnail)
+        }
         
         if self.presenter.isFavorite() {
             self.favoriteButton.setImage(UIImage(named: "like"), for: .normal)
@@ -89,7 +85,6 @@ final class BookDetailViewController: UIViewController {
         bookDetailImage.applyFormShadow()
         
         self.viewDetail.layoutSubviews()
-        
     }
 }
 
@@ -132,8 +127,8 @@ extension BookDetailViewController: BookProtocol {
         self.configureBook()
     }
     
-    func showLoading(message: String) {
-       UIAlertController().loading(viewController: self, name: Const.loading)
+    func showLoading() {
+       UIAlertController().loading(viewController: self, message: Const.loading)
     }
     
     func showBuyBook(url: String) {
@@ -148,10 +143,6 @@ extension BookDetailViewController: BookProtocol {
     func show(error: Error) {
      
     }
-    
-    
-    
-    
 }
 
 extension String {
@@ -170,15 +161,3 @@ extension String {
         }
     }
 }
-//extension String{
-//    func convertHtml() -> NSAttributedString{
-//        guard let data = data(using: .utf8) else { return NSAttributedString() }
-//        do{
-//
-//            return try NSAttributedString(data: data, options: [NSAttributedString.DocumentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-////            return try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
-//        }catch{
-//            return NSAttributedString()
-//        }
-//    }
-//}

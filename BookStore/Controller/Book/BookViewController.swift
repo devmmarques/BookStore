@@ -12,6 +12,8 @@ final class BookViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var topConstraintCollectionView: NSLayoutConstraint!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // Mark: Properties
     let searchController = UISearchController(searchResultsController: nil)
@@ -26,6 +28,7 @@ final class BookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: Const.Cell.bookCell, bundle: nil), forCellWithReuseIdentifier: Const.Cell.bookCell)
+        self.searchBar.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,10 +43,12 @@ final class BookViewController: UIViewController {
         
         switch bookType {
         case .home:
-            print("Home")
             self.presenter.fetch(name: self.presenter.getNameSearchBook())
+            self.searchBar.isHidden = false
+            topConstraintCollectionView.constant = CGFloat(40.0)
         case .favorite:
-            print("Favorito")
+            topConstraintCollectionView.constant = CGFloat(0.0)
+            self.searchBar.isHidden = true
             self.presenter.fetchFavorite()
         }
     }
@@ -58,7 +63,10 @@ extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Cell.bookCell, for: indexPath) as! BookCell
         let book = self.presenter.getBook(index: indexPath.row)
-        cell.configure(thumbnail: book.volumeInfo.imageLinks.thumbnail)
+        if let image = book.volumeInfo.imageLinks {
+            cell.configure(thumbnail: image.thumbnail )
+        }
+        
         return cell
     }
 
@@ -105,7 +113,35 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
+}
 
+extension BookViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+         print("searchBarTextDidBeginEditing")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+       print("searchBarTextDidEndEditing")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+       
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if let text = searchBar.text, text.count > 3 {
+           self.presenter.fetch(name: text)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+    }
+    
+    
 }
 
 extension BookViewController: BookProtocol {
@@ -114,8 +150,8 @@ extension BookViewController: BookProtocol {
         self.collectionView.reloadData()
     }
 
-    func showLoading(message: String) {
-        UIAlertController().loading(viewController: self, name: message.isEmpty ? self.presenter.getNameSearchBook() : message)
+    func showLoading() {
+        UIAlertController().loading(viewController: self, message: Const.loading)
     }
 
     func showBuyBook(url: String) {

@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-class BookDetailPresenter {
+final class BookDetailPresenter {
     
     private let viewProtocol: BookProtocol
     private let serviceAPI: BookService
@@ -19,7 +18,6 @@ class BookDetailPresenter {
         self.viewProtocol = viewProtocol
         self.serviceAPI = serviceAPI
     }
-    
     
     func fetchFavorite(id: String) {
         self.serviceAPI.fetchBookBy(id: id) { [weak self] result in
@@ -32,7 +30,6 @@ class BookDetailPresenter {
             }
         }
     }
-    
     
     func saveBook() {
         guard let book = book else { return }

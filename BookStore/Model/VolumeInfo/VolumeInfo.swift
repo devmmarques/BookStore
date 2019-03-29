@@ -17,9 +17,9 @@ struct VolumeInfo: Codable {
     let pageCount: Int?
     let printType: String
     let categories: [String]?
-    let imageLinks: ImageLinks
+    let imageLinks: ImageLinks?
 
-    init(title: String, authors: [String]?, description: String?, industryIdentifiers: [IndustryIdentifiers]?, pageCount: Int?, printType: String, categories:[String]?, imageLinks: ImageLinks) {
+    init(title: String, authors: [String]?, description: String?, industryIdentifiers: [IndustryIdentifiers]?, pageCount: Int?, printType: String, categories:[String]?, imageLinks: ImageLinks?) {
         self.title = title
         self.authors = authors
         self.description = description

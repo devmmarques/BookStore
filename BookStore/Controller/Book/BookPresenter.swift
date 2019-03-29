@@ -24,10 +24,10 @@ final class BookPresenter {
     }
 
     func fetch(name: String) {
-        self.viewProtocol.showLoading(message: name)
+        self.viewProtocol.showLoading()
         self.nameBook = name
         if self.validFetchBook() {
-            self.serviceAPI.fetchBook(name: name, page: currentPage) { [weak self] result in
+            self.serviceAPI.fetchBook(name: self.nameBook, page: currentPage) { [weak self] result in
                 switch result {
                 case let .success(response):
                     self?.mountBook(response: response)
@@ -41,6 +41,7 @@ final class BookPresenter {
     }
     
     func fetchFavorite() {
+        self.viewProtocol.showLoading()
         self.serviceAPI.fetchBookFavorite() { [weak self] result in
             switch result {
             case let .success(response):
@@ -64,7 +65,7 @@ final class BookPresenter {
     }
 
     private func validFetchBook() -> Bool {
-        if self.listBook.count >= self.totalBook && self.listBook.count > 0{
+        if self.listBook.count >= self.totalBook && self.listBook.count > 0 {
             return false
         }
         return true
