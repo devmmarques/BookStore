@@ -21,14 +21,11 @@ final class BookContainerViewController: UIViewController {
     init() {
         
         bookViewController = StoryboardUtil.bookViewController()
-        bookViewController.bookType = .home
         favoriteViewController = StoryboardUtil.bookFavoriteViewController()
-        
         
         super.init(nibName: nil, bundle: nil)
         
         bookViewController.containerController = self
-        
         setupHierarchy()
         setupConstraints()
         setupNavigationBar()
@@ -75,7 +72,7 @@ final class BookContainerViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        bookViewController.navigationController?.navigationItem.title = "Home"
+        bookViewController.navigationController?.navigationBar.topItem?.title = "Home"
         favoriteViewController.navigationController?.navigationItem.title = "Favoritos"
     }
     

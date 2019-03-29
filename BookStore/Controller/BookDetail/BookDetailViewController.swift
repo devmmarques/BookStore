@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 final class BookDetailViewController: UIViewController {
     
@@ -141,7 +142,7 @@ extension BookDetailViewController: BookProtocol {
     }
     
     func show(error: Error) {
-     
+        SCLAlertView().showError("ERRO", subTitle: error.localizedDescription)
     }
 }
 

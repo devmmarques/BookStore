@@ -16,6 +16,7 @@ public class BookNavigationController: UINavigationController {
         AppearanceNavigationHelper.customizeNavigationBar()
         
         let controller = BookContainerViewController()
+        controller.title = "Book Store"
         self.pushViewController(controller, animated: true)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 final class BookFavoriteViewController: UIViewController {
     
@@ -68,7 +69,7 @@ extension BookFavoriteViewController: UICollectionViewDelegateFlowLayout {
         let padding: CGFloat =  20
         let collectionViewSize = collectionView.frame.size.width - padding
         
-        return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
+        return CGSize(width: collectionViewSize/2, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -103,6 +104,6 @@ extension BookFavoriteViewController: BookProtocol {
     }
     
     func show(error: Error) {
-        
+        SCLAlertView().showError("ERROR", subTitle: error.localizedDescription)
     }
 }

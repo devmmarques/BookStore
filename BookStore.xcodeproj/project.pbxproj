@@ -50,8 +50,6 @@
 		B207D887224E9C0300587DF3 /* BookFavorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B207D886224E9C0300587DF3 /* BookFavorite.storyboard */; };
 		B207D88A224E9C4700587DF3 /* BookFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207D889224E9C4700587DF3 /* BookFavoriteViewController.swift */; };
 		B207D88C224E9C7C00587DF3 /* BookFavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207D88B224E9C7C00587DF3 /* BookFavoritePresenter.swift */; };
-		B207D88E224EA8DA00587DF3 /* Dialogable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207D88D224EA8DA00587DF3 /* Dialogable.swift */; };
-		B207D893224EA8FF00587DF3 /* BookAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207D892224EA8FF00587DF3 /* BookAlertAction.swift */; };
 		B290D7F0224B17E200FADC4B /* BookContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B290D7EF224B17E200FADC4B /* BookContainerViewController.swift */; };
 		B290D7F2224B186400FADC4B /* StoryboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B290D7F1224B186400FADC4B /* StoryboardUtil.swift */; };
 		B290D7F4224B1D2700FADC4B /* BookNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B290D7F3224B1D2700FADC4B /* BookNavigationController.swift */; };
@@ -137,8 +135,6 @@
 		B207D886224E9C0300587DF3 /* BookFavorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookFavorite.storyboard; sourceTree = "<group>"; };
 		B207D889224E9C4700587DF3 /* BookFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFavoriteViewController.swift; sourceTree = "<group>"; };
 		B207D88B224E9C7C00587DF3 /* BookFavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFavoritePresenter.swift; sourceTree = "<group>"; };
-		B207D88D224EA8DA00587DF3 /* Dialogable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialogable.swift; sourceTree = "<group>"; };
-		B207D892224EA8FF00587DF3 /* BookAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookAlertAction.swift; path = BookStore/Util/CustomView/BookAlertAction.swift; sourceTree = SOURCE_ROOT; };
 		B290D7EF224B17E200FADC4B /* BookContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerViewController.swift; sourceTree = "<group>"; };
 		B290D7F1224B186400FADC4B /* StoryboardUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardUtil.swift; sourceTree = "<group>"; };
 		B290D7F3224B1D2700FADC4B /* BookNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNavigationController.swift; sourceTree = "<group>"; };
@@ -220,7 +216,6 @@
 				68E595802247B54400ACEC37 /* Util */,
 				68E595792247B4CB00ACEC37 /* Services */,
 				68A9CE6A224685B6000CAFBD /* AppDelegate.swift */,
-				68A9CE6E224685B6000CAFBD /* Main.storyboard */,
 				68A9CE71224685B8000CAFBD /* Assets.xcassets */,
 				68A9CE73224685B8000CAFBD /* LaunchScreen.storyboard */,
 				68A9CE76224685B8000CAFBD /* Info.plist */,
@@ -280,11 +275,9 @@
 		68E595802247B54400ACEC37 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				B207D891224EA8F100587DF3 /* CustomView */,
 				68EC7DBF2248256A00A1429C /* Protocols */,
 				68E595892247B60A00ACEC37 /* Extensions */,
 				68E595812247B55E00ACEC37 /* EnvironmentConfig.swift */,
-				B207D88D224EA8DA00587DF3 /* Dialogable.swift */,
 				68EC7DC2224826F300A1429C /* Const.swift */,
 				B290D7F1224B186400FADC4B /* StoryboardUtil.swift */,
 			);
@@ -386,6 +379,7 @@
 		68E595AA2247E6F600ACEC37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				68A9CE6E224685B6000CAFBD /* Main.storyboard */,
 				68E595AB2247E70600ACEC37 /* BookCell.xib */,
 				B2E1ECFD224DB79B00DC6E0A /* DetailBook.storyboard */,
 				B207D886224E9C0300587DF3 /* BookFavorite.storyboard */,
@@ -445,15 +439,6 @@
 			path = BookFavorite;
 			sourceTree = "<group>";
 		};
-		B207D891224EA8F100587DF3 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				B207D892224EA8FF00587DF3 /* BookAlertAction.swift */,
-			);
-			name = CustomView;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		B290D7F5224B1EBC00FADC4B /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +485,7 @@
 				68A9CE63224685B6000CAFBD /* Sources */,
 				68A9CE64224685B6000CAFBD /* Frameworks */,
 				68A9CE65224685B6000CAFBD /* Resources */,
+				379FF15B446B6916AE42A0AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -626,6 +612,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		379FF15B446B6916AE42A0AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookStore/Pods-BookStore-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BookStore/Pods-BookStore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		47D78ACB93ED14A91F7C6D50 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -728,7 +736,6 @@
 				68E5958B2247B61A00ACEC37 /* Codable+Extensions.swift in Sources */,
 				68A9CE6B224685B6000CAFBD /* AppDelegate.swift in Sources */,
 				B2DD32F1224DA962004D554E /* BookDetailViewController.swift in Sources */,
-				B207D893224EA8FF00587DF3 /* BookAlertAction.swift in Sources */,
 				68E5959F2247C36C00ACEC37 /* BookRouter.swift in Sources */,
 				68EC7DC3224826F300A1429C /* Const.swift in Sources */,
 				68EC7DC5224832F100A1429C /* Array+Extensions.swift in Sources */,
@@ -749,7 +756,6 @@
 				68EC7DC72248606400A1429C /* UIView+Extensions.swift in Sources */,
 				68EC7DA72247EDD600A1429C /* BookProtocol.swift in Sources */,
 				68EC7DC12248258200A1429C /* Storable.swift in Sources */,
-				B207D88E224EA8DA00587DF3 /* Dialogable.swift in Sources */,
 				B290D7F7224B1F0F00FADC4B /* AppearanceNavigationHelper.swift in Sources */,
 				68E5958E2247B83900ACEC37 /* Book.swift in Sources */,
 				6871536F224940F100C6B895 /* UIAlertController+Extension.swift in Sources */,

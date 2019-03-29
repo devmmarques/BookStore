@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 final class BookViewController: UIViewController {
 
@@ -29,6 +30,7 @@ final class BookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: Const.Cell.bookCell, bundle: nil), forCellWithReuseIdentifier: Const.Cell.bookCell)
+        self.title = "Home"
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,7 +54,6 @@ final class BookViewController: UIViewController {
     
     private func configureSearchBar() {
         self.searchBar.delegate = self
-//        self.searchBar.barTintColor = UIColor.greenBook
     }
 }
 
@@ -68,7 +69,7 @@ extension BookViewController: UICollectionViewDataSource {
         if let image = book.volumeInfo.imageLinks {
             cell.configure(thumbnail: image.thumbnail )
         }
-        
+    
         return cell
     }
 
@@ -101,7 +102,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         let padding: CGFloat =  20
         let collectionViewSize = collectionView.frame.size.width - padding
 
-        return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
+        return CGSize(width: collectionViewSize/2, height: 200)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -174,10 +175,6 @@ extension BookViewController: BookProtocol {
     func show(error: Error) {
         dismissLoading()
         
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+       SCLAlertView().showError("ERRO", subTitle: error.localizedDescription)
     }
 }
