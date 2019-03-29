@@ -20,7 +20,7 @@ final class BookViewController: UIViewController {
     
     public var containerController: UIViewController!
     public var bookType: BookType?
-
+    
     private lazy var presenter: BookPresenter = {
         let presenter = BookPresenter(viewProtocol: self, serviceAPI: BookService())
         return presenter
@@ -52,7 +52,7 @@ final class BookViewController: UIViewController {
     
     private func configureSearchBar() {
         self.searchBar.delegate = self
-        self.searchBar.barTintColor = UIColor.greenBook
+//        self.searchBar.barTintColor = UIColor.greenBook
     }
 }
 
@@ -142,7 +142,11 @@ extension BookViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        
+        if searchText.count == 0 {
+            self.presenter.cleanListBook()
+            self.collectionView.reloadData()
+            configureView()
+        }
     }
     
 }
@@ -174,7 +178,6 @@ extension BookViewController: BookProtocol {
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         
         alert.addAction(action)
-      
-        self.navigationController?.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }
