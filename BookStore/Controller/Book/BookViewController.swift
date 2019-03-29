@@ -58,7 +58,7 @@ extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Cell.bookCell, for: indexPath) as! BookCell
         let book = self.presenter.getBook(index: indexPath.row)
-        cell.configure(book: book, isFavorite: self.presenter.isFavorite(id: book.id), delegate: self)
+        cell.configure(thumbnail: book.volumeInfo.imageLinks.thumbnail)
         return cell
     }
 
@@ -76,7 +76,9 @@ extension BookViewController: UICollectionViewDataSource {
 extension BookViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        let viewDetailBook = StoryboardUtil.bookDetailViewController()
+        viewDetailBook.idBook = self.presenter.getBook(index: indexPath.row).id
+        self.present(viewDetailBook, animated: false, completion: nil)
     }
 
 }
@@ -89,7 +91,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         let padding: CGFloat =  20
         let collectionViewSize = collectionView.frame.size.width - padding
 
-        return CGSize(width: collectionViewSize/2, height: 260)
+        return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -132,16 +134,5 @@ extension BookViewController: BookProtocol {
         dismissLoading()
         let alert = BookAlertController(title: "Error", message: error.localizedDescription, image: nil)
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension BookViewController: BookCellDelegate {
-
-    func favorite(id: String) {
-        self.presenter.saveBook(id: id)
-    }
-
-    func buyBook(id: String) {
-        self.presenter.openBuyBook(id: id)
     }
 }

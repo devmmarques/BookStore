@@ -41,7 +41,7 @@ final class BookPresenter {
     }
     
     func fetchFavorite() {
-        self.serviceAPI.fetchBookBy() { [weak self] result in
+        self.serviceAPI.fetchBookFavorite() { [weak self] result in
             switch result {
             case let .success(response):
                 self?.mountFavorite(books: response)
@@ -70,30 +70,7 @@ final class BookPresenter {
         return true
     }
 
-    func saveBook(id: String) {
-        if var listBookIds = self.serviceAPI.loadBooks() {
-            if listBookIds.contains(id) {
-                let newList = listBookIds.filter { $0 != id }
-                serviceAPI.removeBooks()
-                serviceAPI.saveBooks(books: newList)
-            } else {
-                listBookIds.append(id)
-                serviceAPI.removeBooks()
-                serviceAPI.saveBooks(books: listBookIds)
-            }
-        } else {
-            serviceAPI.saveBooks(books: [id])
-        }
-        self.viewProtocol.show()
-    }
-
-    func isFavorite(id: String) -> Bool{
-        if let listBookIds = self.serviceAPI.loadBooks() {
-            return listBookIds.contains(id)
-        }
-        return false
-    }
-
+   
     public func getCountCell() -> Int {
         return listBook.count
     }
@@ -115,11 +92,5 @@ final class BookPresenter {
         self.currentPage = 0
         self.totalBook = 0
     }
-
-    public func openBuyBook(id: String) {
-        if let book = listBook.first(where: { $0.id == id}) {
-            guard let buyLink = book.saleInfo.buyLink else { return }
-            self.viewProtocol.showBuyBook(url: buyLink)
-        }
-    }
+  
 }

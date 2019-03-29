@@ -19,5 +19,10 @@ class StoryboardUtil {
         let bookViewController = StoryboardUtil().viewControllerWith(storeBoardName: "Main", controllerName: "BookViewController")
         return  bookViewController as! BookViewController
     }
+    
+    static func bookDetailViewController() -> BookDetailViewController {
+        let bookDetailViewController = StoryboardUtil().viewControllerWith(storeBoardName: "DetailBook", controllerName: "BookDetailViewController")
+        return bookDetailViewController as! BookDetailViewController
+    }
 
 }

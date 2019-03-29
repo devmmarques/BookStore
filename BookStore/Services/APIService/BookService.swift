@@ -36,7 +36,7 @@ final class BookService: NSObject, BookServiceProtocol {
         }
     }
     
-    func fetchBookBy(completion: @escaping (APIResult<[Book]>) -> Void) {
+    func fetchBookFavorite(completion: @escaping (APIResult<[Book]>) -> Void) {
         guard let bookIds = loadBooks(), !bookIds.isEmpty else {
             completion(.success([]))
             return
@@ -61,6 +61,18 @@ final class BookService: NSObject, BookServiceProtocol {
                     alreadyFailed = true
                     completion(.failure(error))
                 }
+            }
+        }
+    }
+    
+    public func fetchBookBy(id: String, completion: @escaping (APIResult<Book>) -> Void) {
+        let router = BookRouter.fetch(id: id)
+        apiClient.request(router: router){ (response: APIResult<Book>) in
+            switch response {
+            case let .success(value):
+                completion(.success(value))
+            case let .failure(error):
+                completion(.failure(error))
             }
         }
     }

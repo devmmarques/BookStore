@@ -12,6 +12,7 @@ struct Const {
 
     static let limitBookFetch = 20
     static let nameBookDefault = "iOS"
+    static let loading = "Loading..."
 
     struct UserDefault {
         static let booksFavorite = "booksFavoriteKey"
