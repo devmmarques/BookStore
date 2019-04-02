@@ -1,20 +1,24 @@
 PODS:
   - Nimble (8.0.1)
   - Quick (2.0.0)
+  - SCLAlertView (0.8)
 
 DEPENDENCIES:
   - Nimble
   - Quick
+  - SCLAlertView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Nimble
     - Quick
+    - SCLAlertView
 
 SPEC CHECKSUMS:
   Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
   Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: 8f342faeb8131638d7b8b1c416948921f734c71a
+PODFILE CHECKSUM: 5f9db08fcd68c6379854ef12613a4abcb55fa52a
 
 COCOAPODS: 1.6.1

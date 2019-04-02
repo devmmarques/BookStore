@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import SCLAlertView
 
-final class BookViewController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
+final class BookViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var topConstraintCollectionView: NSLayoutConstraint!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var imagePlaceHolder: UIImageView!
+    
     // Mark: Properties
-    let searchController = UISearchController(searchResultsController: nil)
-
+    
+    public var containerController: UIViewController!
+    public var bookType: BookType?
+    
     private lazy var presenter: BookPresenter = {
         let presenter = BookPresenter(viewProtocol: self, serviceAPI: BookService())
         return presenter
@@ -24,74 +30,30 @@ final class BookViewController: UIViewController, UISearchBarDelegate, UISearchC
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: Const.Cell.bookCell, bundle: nil), forCellWithReuseIdentifier: Const.Cell.bookCell)
-        configureSearchController()
+        self.title = "Home"
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.presenter.fetch(name: self.presenter.getNameSearchBook())
+        self.configureView()
     }
-}
-
-extension BookViewController {
-
-    private func configureSearchController() {
-
-        let searchTextField: UITextField? = { [unowned self] in
-            var textField: UITextField?
-            searchController.searchBar.subviews.forEach({ view in
-                view.subviews.forEach({ view in
-                    if let view  = view as? UITextField {
-                        textField = view
-                    }
-                })
-            })
-            return textField
-        }()
-
-        if let searchText = searchTextField?.subviews.first {
-            searchText.backgroundColor = UIColor.white
-            searchText.layer.cornerRadius = 10
-            searchText.clipsToBounds = true
-        }
-        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor.gray
-
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = Const.Placeholder.searchBook
-        searchController.searchBar.searchBarStyle = .prominent
-        searchController.searchBar.backgroundColor = UIColor.greenBook
-        searchController.hidesNavigationBarDuringPresentation = false
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-
-        self.navigationController?.navigationBar.barTintColor = UIColor.greenBook
-    }
-}
-
-extension BookViewController: UISearchResultsUpdating {
-
-    func updateSearchResults(for searchController: UISearchController) {
-
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let name = searchBar.text else { return }
-
-        if name.count > 3 {
-            self.presenter.cleanListBook()
-            self.presenter.fetch(name: name)
+    
+    private func configureView() {
+        if self.presenter.getTotalBooks() > 0 {
+            self.collectionView.isHidden = false
+            self.imagePlaceHolder.isHidden = true
+        } else {
+            self.searchBar.isHidden = false
+            self.collectionView.isHidden = true
+            self.imagePlaceHolder.isHidden = false
+            self.imagePlaceHolder.image = UIImage(named: "placeholder_book")
+            topConstraintCollectionView.constant = CGFloat(40.0)
+            configureSearchBar()
         }
     }
-
-    func didPresentSearchController(_ searchController: UISearchController) {
-        self.searchController.searchBar.becomeFirstResponder()
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.showsCancelButton = false
-        searchController.searchBar.sizeToFit()
+    
+    private func configureSearchBar() {
+        self.searchBar.delegate = self
     }
 }
 
@@ -104,7 +66,10 @@ extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Cell.bookCell, for: indexPath) as! BookCell
         let book = self.presenter.getBook(index: indexPath.row)
-        cell.configure(book: book, isFavorite: self.presenter.isFavorite(id: book.id), delegate: self)
+        if let image = book.volumeInfo.imageLinks {
+            cell.configure(thumbnail: image.thumbnail )
+        }
+    
         return cell
     }
 
@@ -122,7 +87,9 @@ extension BookViewController: UICollectionViewDataSource {
 extension BookViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        let viewDetailBook = StoryboardUtil.bookDetailViewController()
+        viewDetailBook.idBook = self.presenter.getBook(index: indexPath.row).id
+        self.present(viewDetailBook, animated: false, completion: nil)
     }
 
 }
@@ -135,7 +102,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         let padding: CGFloat =  20
         let collectionViewSize = collectionView.frame.size.width - padding
 
-        return CGSize(width: collectionViewSize/2, height: 260)
+        return CGSize(width: collectionViewSize/2, height: 200)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -149,17 +116,51 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
+}
 
+extension BookViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+         print("searchBarTextDidBeginEditing")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+       print("searchBarTextDidEndEditing")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+       self.presenter.cleanListBook()
+       self.collectionView.reloadData()
+       configureView()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if let text = searchBar.text, text.count > 2 {
+           self.presenter.fetch(name: text)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.count == 0 {
+            self.presenter.cleanListBook()
+            self.collectionView.reloadData()
+            configureView()
+        }
+    }
+    
 }
 
 extension BookViewController: BookProtocol {
 
     func show() {
+        configureView()
         self.collectionView.reloadData()
     }
 
-    func showLoading(message: String) {
-        UIAlertController().loading(viewController: self, name: message.isEmpty ? self.presenter.getNameSearchBook() : message)
+    func showLoading() {
+        UIAlertController().loading(viewController: self, message: Const.loading)
     }
 
     func showBuyBook(url: String) {
@@ -168,24 +169,12 @@ extension BookViewController: BookProtocol {
     }
 
     func dismissLoading() {
-        self.searchController.dismiss(animated: false) {
-            UIAlertController().dismissLoading(viewController: self)
-        }
         UIAlertController().dismissLoading(viewController: self)
     }
 
     func show(error: Error) {
-
-    }
-}
-
-extension BookViewController: BookCellDelegate {
-
-    func favorite(id: String) {
-        self.presenter.saveBook(id: id)
-    }
-
-    func buyBook(id: String) {
-        self.presenter.openBuyBook(id: id)
+        dismissLoading()
+        
+       SCLAlertView().showError("ERRO", subTitle: error.localizedDescription)
     }
 }

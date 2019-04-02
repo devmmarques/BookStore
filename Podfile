@@ -6,6 +6,7 @@ target 'BookStore' do
   use_frameworks!
 
   # Pods for BookStore
+  pod 'SCLAlertView'
 
   target 'BookStoreTests' do
     inherit! :search_paths
